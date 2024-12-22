@@ -1,7 +1,9 @@
 # Improved-Differential-Distinguisher-GIFT128-ASCON
 Source code for **ML based Improved Differential Distinguisher with High Accuracy: Application to GIFT-128 and ASCON** 
-* eprint - https://eprint.iacr.org/2024/1370.pdf
-
+* SPACE-2024: https://link.springer.com/chapter/10.1007/978-3-031-80408-3_18  
+* eprint: https://eprint.iacr.org/2024/1370.pdf
+* Citation: Yadav, T., Kumar, M. (2025). ML Based Improved Differential Distinguisher with High Accuracy: Application to GIFT-128 and ASCON. In: Knechtel, J., Chatterjee, U., Forte, D. (eds) Security, Privacy, and Applied Cryptography Engineering. SPACE 2024. Lecture Notes in Computer Science, vol 15351. Springer, Cham. https://doi.org/10.1007/978-3-031-80408-3_18
+  
 ## Source Code for Improved Differential Distinguisher for GIFT128 and ASCON
 
 ### There are four files in this source code.
