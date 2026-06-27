@@ -1,0 +1,171 @@
+(.venv) PS C:\Users\ojast\OneDrive\Desktop\drdo internship\Improved-Differential-Distinguisher-GIFT128-ASCON-1> python improve_distinguisher.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782556911.741706   10108 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782556913.976259   10108 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+I0000 00:00:1782556914.872615   10108 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+C:\Users\ojast\OneDrive\Desktop\drdo internship\Improved-Differential-Distinguisher-GIFT128-ASCON-1\.venv\Lib\site-packages\keras\src\layers\core\dense.py:107: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+C:\Users\ojast\OneDrive\Desktop\drdo internship\Improved-Differential-Distinguisher-GIFT128-ASCON-1\.venv\Lib\site-packages\keras\src\optimizers\base_optimizer.py:86: UserWarning: Argument `decay` is no longer supported and will be ignored.
+  warnings.warn(
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|████████████████████████████████████████████████████████████████████████████████████| 50/50 [07:29<00:00,  8.99s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [04:30<00:00,  5.42s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 50 | TP_Random Count: 50 | Accuracy: 100%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [04:45<00:00,  5.71s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [06:17<00:00,  7.54s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 48 | TP_Random Count: 49 | Accuracy: 97%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [08:14<00:00,  9.89s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [09:58<00:00, 11.97s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 47 | TP_Random Count: 49 | Accuracy: 96%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [09:23<00:00, 11.27s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [13:26<00:00, 16.13s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 49 | TP_Random Count: 49 | Accuracy: 98%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [12:15<00:00, 14.72s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [14:55<00:00, 17.91s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 50 | TP_Random Count: 50 | Accuracy: 100%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [14:53<00:00, 17.87s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [15:08<00:00, 18.17s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 48 | TP_Random Count: 49 | Accuracy: 97%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [13:17<00:00, 15.94s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [16:30<00:00, 19.82s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 50 | TP_Random Count: 49 | Accuracy: 99%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [15:19<00:00, 18.39s/it]
+Making Prediction for All Random Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [16:55<00:00, 20.31s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 50 | TP_Random Count: 50 | Accuracy: 100%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [04:35<00:00,  5.51s/it]
+Making Prediction for All Random Data: 
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [1:40:14<00:00, 120.30s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 50 | TP_Random Count: 50 | Accuracy: 100%
+
++++++++++++++++++++++++++++++++++++++
+
+Input Parameters--> Model Trained on 40 output bits of ASCON320 | Input Difference for Data:  0000000001 | Input Difference for ML model:  0000000001 | Data Required (beta): 2^18 | Classical Data: 2^0 | Total Number of Rounds: 4 | ML Number of Rounds: 4 | Model Accuracy: 0.502252995967865 | Cutoff (C_T): 125161 | Number of Experiments: 100
+
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Error in loading the saved optimizer state. As a result, your model is starting with a freshly initialized optimizer.
+./saved_model/model_7_40_bits_4_0000000001_acc_0.5022529959678650.h5 Model Loaded!
+
+Making Prediction for All Real Data: 
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [07:20<00:00,  8.80s/it]
+Making Prediction for All Random Data: 
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [18:26<00:00, 22.14s/it]
+
+Results for Manual Cutoff (For Validation):  125161
+TP_Real Count: 48 | TP_Random Count: 47 | Accuracy: 95%
+
++++++++++++++++++++++++++++++++++++++

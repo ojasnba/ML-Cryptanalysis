@@ -199,7 +199,7 @@ def distinguisher(n_test,num_rounds,ml_round,class_data,acc,input_diff,input_dif
 
     
 if __name__ == '__main__':
-    CIPHER_NAME = "GIFT128" # GIFT128 or ASCON
+    CIPHER_NAME = "ASCON320" # GIFT128 or ASCON
     if (CIPHER_NAME=="GIFT128"):
         BLOCK_SIZE = 128
         num_rounds = 8

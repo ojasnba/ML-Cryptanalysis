@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# VS Code
+.vscode/
+
+# TensorFlow checkpoints (optional if very large)
+*.ckpt
+
+# OS files
+.DS_Store
+Thumbs.db
