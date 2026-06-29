@@ -61,7 +61,7 @@ def train(n, m, num_rounds, bit_size, input_diff):
     # Random Forest
     # ----------------------------------------
     rf = RandomForestClassifier(
-        n_estimators=100,
+        n_estimators=300,
         random_state=42,
         n_jobs=-1
     )

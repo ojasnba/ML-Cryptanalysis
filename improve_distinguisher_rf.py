@@ -5,6 +5,7 @@ import math
 import os
 from tqdm import trange
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 import gift as gift
 import ascon as ascon
@@ -95,7 +96,7 @@ def prediction(n,input_diff,input_diff_ML,num_rounds,class_data,ml_rounds,acc,ac
             X_test = X
 
         P = model.predict_proba(X_test)[:, 1]
-        TP_predictions_count = len(np.where(np.array(P) > 0.5)[0])
+        TP_predictions_count = np.sum(P > 0.5)
         TP_arr.append(TP_predictions_count)
 
     print("Making Prediction for All Random Data: ")
@@ -107,25 +108,45 @@ def prediction(n,input_diff,input_diff_ML,num_rounds,class_data,ml_rounds,acc,ac
             X_test = X
 
         P = model.predict_proba(X_test)[:, 1]
-        TP_predictions_count = len(np.where(np.array(P) > 0.5)[0])
+        TP_predictions_count = np.sum(P > 0.5)
         TP_arr.append(TP_predictions_count)
 
     print("Prediction Results (All Real Data): ")
     print(TP_arr[0:loop])
     print("Prediction Results (All Random Data): ")
     print(TP_arr[loop:])
-    print("Average TP in All Real Data: " + str(statistics.mean(TP_arr[0:loop])))
-    print("Average TP in All Random Data: " + str(statistics.mean(TP_arr[loop:])))
-    print("Difference in Average TP Data (Real-Random): " + str(statistics.mean(TP_arr[0:loop]) - statistics.mean(TP_arr[loop:])))
-    print("Min TP in All Real Data: " + str(min(TP_arr[0:loop])))
-    print("Max TP in All Random Data: " + str(max(TP_arr[loop:])))
+    avg_real = statistics.mean(TP_arr[0:loop])
+    avg_random = statistics.mean(TP_arr[loop:])
+    diff = avg_real - avg_random
+
+    min_real = min(TP_arr[0:loop])
+    max_random = max(TP_arr[loop:])
+
+    cutoff_graph = (min_real + max_random) // 2
+
+    cutoff_cal = math.ceil(
+        max(
+            2,
+            n * accuracy0 +
+            (n // class_data) * (accuracy1 - accuracy0) * 0.5
+        )
+    )
+    print("Average TP in All Real Data:", avg_real)
+    print("Average TP in All Random Data:", avg_random)
+    print("Difference in Average TP Data (Real-Random):", diff)
+    print("Min TP in All Real Data:", min_real)
+    print("Max TP in All Random Data:", max_random)
     print("Difference in Min_Real-Max_Random: " + str(min(TP_arr[0:loop]) - max(TP_arr[loop:])))
 
-    cutoff_graph = (min(TP_arr[0:loop]) + max(TP_arr[loop:])) // 2
-    cutoff_cal = math.ceil(max(2, n * accuracy0 + (n // class_data * (accuracy1 - accuracy0) * (0.5))))
     print("Graph cutoff:", cutoff_graph)
     print("Calculated cutoff:", cutoff_cal)
     print("Difference in Accuracy: " + str(accuracy1 - accuracy0) + " | Data Difference Expected (based on accuracy): " + str((n // class_data) * (accuracy1 - accuracy0)) + " | Cutoff Using Graph (Algo 3): " + str(cutoff_graph) + " | Cutoff Calculated (Algo 4): " + str(cutoff_cal) + " | Data Used: 2^" + str(int(math.log(n, 2))))
+
+    print("\nResults for Cutoff Using Graph (Algo 3):  " + str(cutoff_graph))
+    graph_accuracy = cal_accuracy(TP_arr, cutoff_graph, loop)
+
+    print("\nResults for Cutoff Calculated (Algo 4):  " + str(cutoff_cal))
+    calc_accuracy = cal_accuracy(TP_arr, cutoff_cal, loop)
 
     xdata = [i + 1 for i in range(0, loop)]
     ydata_1 = TP_arr[0:loop]
@@ -137,27 +158,65 @@ def prediction(n,input_diff,input_diff_ML,num_rounds,class_data,ml_rounds,acc,ac
     plt.ylabel("No. of Prediction > 0.5")
     plt.plot(xdata, ydata_1, 'o', label="TP", linestyle=":", color="green")
     plt.plot(xdata, ydata_0, 'd', label="TN", linestyle=":", color="red")
-    plt.savefig("graphs/" + str(CIPHER_NAME) + "_" + str(bit_size) + "_bits_" + str(num_rounds) + "_rounds_data_2_" + str(str(int(math.log(n, 2)))) + ".png")
-    plt.show()
+    os.makedirs("rf_results/graphs", exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = (
+    f"rf_results/graphs/"
+    f"{CIPHER_NAME}_{bit_size}bits_{num_rounds}rounds_"
+    f"2^{int(math.log(n,2))}_{timestamp}.png"
+    )
+    plt.savefig(filename)
+    print(f"Graph saved to: {filename}")
+    plt.close()
+    os.makedirs("rf_results", exist_ok=True)
 
-    print("\nResults for Cutoff Using Graph (Algo 3):  " + str(cutoff_graph))
-    cal_accuracy(TP_arr, cutoff_graph, loop)
-    print("\nResults for Cutoff Calculated (Algo 4):  " + str(cutoff_cal))
+    with open("rf_results/results.txt", "a") as f:
+        f.write("=" * 60 + "\n")
+        f.write(f"Timestamp: {timestamp}\n")
+        f.write(f"Cipher: {CIPHER_NAME}\n")
+        f.write(f"Rounds: {num_rounds}\n")
+        f.write(f"Bit Size: {bit_size}\n")
+        f.write(f"Data Complexity: 2^{int(math.log(n,2))}\n\n")
+        f.write(f"Model Accuracy: {accuracy2:.6f}\n")
+        f.write(f"TP Accuracy (Real): {accuracy1:.6f}\n")
+        f.write(f"TP Accuracy (Random): {accuracy0:.6f}\n\n")
 
-    return cal_accuracy(TP_arr, cutoff_cal, loop)
+        f.write(f"Graph Accuracy: {graph_accuracy:.2f}%\n")
+        f.write(f"Calculated Accuracy: {calc_accuracy:.2f}%\n")
 
-def cal_accuracy(TP_arr,cutoff,loop):
+        f.write(f"Average TP (Real): {avg_real}\n")
+        f.write(f"Average TP (Random): {avg_random}\n")
+        f.write(f"Difference: {diff}\n")
+        f.write(f"Min TP (Real): {min_real}\n")
+        f.write(f"Max TP (Random): {max_random}\n\n")
+
+        f.write(f"Graph Cutoff: {cutoff_graph}\n")
+        f.write(f"Calculated Cutoff: {cutoff_cal}\n")
+        f.write("=" * 60 + "\n\n")
+        
+    return calc_accuracy
+
+def cal_accuracy(TP_arr, cutoff, loop):
     TP_Real_count = 0
     TP_Random_count = 0
-    for i in range(0,len(TP_arr)):
-        if (TP_arr[i] > cutoff):
-            if (i< loop):
+
+    for i in range(len(TP_arr)):
+        if TP_arr[i] > cutoff:
+            if i < loop:
                 TP_Real_count += 1
         else:
-            if (i >= loop):
+            if i >= loop:
                 TP_Random_count += 1
-    print("TP_Real Count: " + str(TP_Real_count) + " | TP_Random Count: " + str(TP_Random_count) + " | Accuracy: " + str(TP_Real_count+TP_Random_count)+str("%"))
-    return (TP_Real_count+TP_Random_count)*100/(2*loop)
+
+    accuracy = (TP_Real_count + TP_Random_count) * 100 / (2 * loop)
+
+    print(
+        "TP_Real Count: " + str(TP_Real_count) +
+        " | TP_Random Count: " + str(TP_Random_count) +
+        " | Accuracy: " + str(accuracy) + "%"
+    )
+
+    return accuracy
 
 
 def distinguisher(n,num_rounds,ml_rounds,class_data,acc,input_diff,input_diff_ML,bit_size,loop,validate,beta,C_T):
