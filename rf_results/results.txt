@@ -182,3 +182,141 @@ Graph Cutoff: 249022
 Calculated Cutoff: 249078
 ============================================================
 
+============================================================
+Timestamp: 20260630_021452
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.499529
+TP Accuracy (Real): 0.485844
+TP Accuracy (Random): 0.487951
+
+Graph Accuracy: 57.00%
+Calculated Accuracy: 55.00%
+Average TP (Real): 255167
+Average TP (Random): 255010
+Difference: 157
+Min TP (Real): 254408
+Max TP (Random): 255752
+
+Graph Cutoff: 255080
+Calculated Cutoff: 255275
+============================================================
+
+============================================================
+Timestamp: 20260630_025601
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.498278
+TP Accuracy (Real): 0.462526
+TP Accuracy (Random): 0.464552
+
+Graph Accuracy: 50.00%
+Calculated Accuracy: 52.00%
+Average TP (Real): 242976
+Average TP (Random): 242915
+Difference: 61
+Min TP (Real): 242319
+Max TP (Random): 243602
+
+Graph Cutoff: 242960
+Calculated Cutoff: 243028
+============================================================
+
+============================================================
+Timestamp: 20260630_033221
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.500177
+TP Accuracy (Real): 0.499834
+TP Accuracy (Random): 0.501379
+
+Graph Accuracy: 44.00%
+Calculated Accuracy: 49.00%
+Average TP (Real): 262582
+Average TP (Random): 262691
+Difference: -109
+Min TP (Real): 261744
+Max TP (Random): 263406
+
+Graph Cutoff: 262575
+Calculated Cutoff: 262462
+============================================================
+
+============================================================
+Timestamp: 20260630_035651
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.499908
+TP Accuracy (Real): 0.499645
+TP Accuracy (Random): 0.503134
+
+Graph Accuracy: 45.00%
+Calculated Accuracy: 43.00%
+Average TP (Real): 262629
+Average TP (Random): 262751
+Difference: -122
+Min TP (Real): 261340
+Max TP (Random): 263529
+
+Graph Cutoff: 262434
+Calculated Cutoff: 262873
+============================================================
+
+============================================================
+Timestamp: 20260630_043219
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.499519
+TP Accuracy (Real): 0.482824
+TP Accuracy (Random): 0.484386
+
+Graph Accuracy: 52.00%
+Calculated Accuracy: 57.00%
+Average TP (Real): 253622
+Average TP (Random): 253523
+Difference: 99
+Min TP (Real): 252891
+Max TP (Random): 254444
+
+Graph Cutoff: 253667
+Calculated Cutoff: 253549
+============================================================
+
+============================================================
+Timestamp: 20260630_124454
+Cipher: ASCON320
+Rounds: 4
+Bit Size: 40
+Data Complexity: 2^19
+
+Model Accuracy: 0.499386
+TP Accuracy (Real): 0.508705
+TP Accuracy (Random): 0.510645
+
+Graph Accuracy: 47.00%
+Calculated Accuracy: 47.00%
+Average TP (Real): 267201
+Average TP (Random): 267219
+Difference: -18
+Min TP (Real): 266554
+Max TP (Random): 267978
+
+Graph Cutoff: 267266
+Calculated Cutoff: 267217
+============================================================
+

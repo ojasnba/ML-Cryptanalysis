@@ -9,6 +9,18 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import joblib
 
+# ===========================
+# Hyperparameters
+# ===========================
+
+N_ESTIMATORS = 300
+MAX_DEPTH = None
+MIN_SAMPLES_LEAF = 1
+MIN_SAMPLES_SPLIT = 2
+MAX_FEATURES = "sqrt"
+RANDOM_STATE = 42
+N_JOBS = -1
+
 MODEL_DIR = "./saved_models_rf/"
 BLOCK_SIZE = 128
 
@@ -61,9 +73,13 @@ def train(n, m, num_rounds, bit_size, input_diff):
     # Random Forest
     # ----------------------------------------
     rf = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42,
-        n_jobs=-1
+        n_estimators=N_ESTIMATORS,
+        max_depth=MAX_DEPTH,
+        min_samples_leaf=MIN_SAMPLES_LEAF,
+        min_samples_split=MIN_SAMPLES_SPLIT,
+        max_features=MAX_FEATURES,
+        random_state=RANDOM_STATE,
+        n_jobs=N_JOBS
     )
 
     print("Training Random Forest...")
