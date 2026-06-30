@@ -1,18 +1,38 @@
+# ==========================
 # Python
+# ==========================
 __pycache__/
 *.pyc
 
-# Virtual environment
+# Virtual Environment
 .venv/
 
+# ==========================
 # VS Code
+# ==========================
 .vscode/
 
-# TensorFlow checkpoints (optional if very large)
+# ==========================
+# Trained Models
+# ==========================
+saved_models_rf/
+saved_models_xgb/
+
+*.pkl
+*.h5
 *.ckpt
 
-# OS files
+# ==========================
+# Experiment Outputs
+# ==========================
+rf_results/
+xgb_results/
+
+# ==========================
+# Operating System Files
+# ==========================
 .DS_Store
 Thumbs.db
-saved_models_rf/
-*.pkl
+
+# Generated logs
+Results*.txt
